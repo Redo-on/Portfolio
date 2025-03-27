@@ -5,6 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Website</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        #frame {
+    margin: 0 auto;
+    width: 800px;
+    max-width: 100%;
+    text-align: center;
+}
+
+#frame input[type=radio] {
+    display: none;
+}
+
+#frame label {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#slides {
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+#overflow {
+    width: 100%;
+    overflow: hidden;
+}
+
+#frame1:checked~#slides .inner {
+    margin-left: 0;
+}
+
+#frame2:checked~#slides .inner {
+    margin-left: -100%;
+}
+
+#frame3:checked~#slides .inner {
+    margin-left: -200%;
+}
+
+#frame4:checked~#slides .inner {
+    margin-left: -300%;
+}
+
+#slides .inner {
+    transition: margin-left 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+    width: 400%;
+    line-height: 0;
+    height: 600px;
+}
+
+#slides .frame {
+    width: 25%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #FFF;
+}
+
+
+#controls {
+    margin: -180px 0 0 0;
+    width: 100%;
+    height: 50px;
+    z-index: 3;
+    position: relative;
+}
+
+#controls label {
+    transition: opacity 0.2s ease-out;
+    display: none;
+    width: 50px;
+    height: 50px;
+    opacity: .4;
+}
+
+#controls label:hover {
+    opacity: 1;
+}
+
+#frame1:checked~#controls label:nth-child(2),
+#frame2:checked~#controls label:nth-child(3),
+#frame3:checked~#controls label:nth-child(4),
+#frame4:checked~#controls label:nth-child(1) {
+    background:
+        url(https://image.flaticon.com/icons/svg/130/130884.svg) no-repeat;
+    float: right;
+    margin: 0 -50px 0 0;
+    display: block;
+}
+
+#frame1:checked~#controls label:nth-last-child(2),
+#frame2:checked~#controls label:nth-last-child(3),
+#frame3:checked~#controls label:nth-last-child(4),
+#frame4:checked~#controls label:nth-last-child(1) {
+    background:
+        url(https://image.flaticon.com/icons/svg/130/130882.svg) no-repeat;
+    float: left;
+    margin: 0 0 0 -50px;
+    display: block;
+}
+
+#bullets {
+    margin: 150px 0 0;
+    text-align: center;
+}
+
+#bullets label {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: #ccc;
+    margin: 0 10px;
+}
+
+#frame1:checked~#bullets label:nth-child(1),
+#frame2:checked~#bullets label:nth-child(2),
+#frame3:checked~#bullets label:nth-child(3),
+#frame4:checked~#bullets label:nth-child(4) {
+    background: #444;
+}
+
+@media screen and (max-width: 900px) {
+
+    #frame1:checked~#controls label:nth-child(2),
+    #frame2:checked~#controls label:nth-child(3),
+    #frame3:checked~#controls label:nth-child(4),
+    #frame4:checked~#controls label:nth-child(1),
+    #frame1:checked~#controls label:nth-last-child(2),
+    #frame2:checked~#controls label:nth-last-child(3),
+    #frame3:checked~#controls label:nth-last-child(4),
+    #frame4:checked~#controls label:nth-last-child(1) {
+        margin: 0;
+    }
+
+    #slides {
+        max-width: calc(100% - 140px);
+        margin: 0 auto;
+    }
+}
+
+    </style>
 </head>
 <body class="bg-gray-900 text-white">
 
@@ -35,12 +180,60 @@
         <p class="mb-4">I havent worked in IT for long, Im a University student for computer sience and enginering. I am very passionat about computers and the way they work. Besides web developing I have also done some software work with all kinds of languages.</p>
         <p class="text-blue-400">redonkurtaj21@gmail.com</p>
         <p class="mt-2">Kosova</p>
+       
     </div>
 </section>
 
 <!-- Resume Section -->
-<section id="resume" class="py-16 px-6 bg-gray-900">
-    <div class="max-w-4xl mx-auto">
+<section id="slidee" class="py-16 px-6 bg-gray-900">
+    <div id="frame">
+        <input type="radio" name="frame" id="frame1" checked />
+        <input type="radio" name="frame" id="frame2" />
+        <input type="radio" name="frame" id="frame3" />
+        <input type="radio" name="frame" id="frame4" />
+        <div id="slides">
+            <div id="overflow">
+                <div class="inner">
+                    <div class="frame frame_1">
+                        <div class="frame-content">
+                            <img src="./hcj.jpeg" alt="img1">
+                        </div>
+                    </div>
+                    <div class="frame frame_2">
+                        <div class="frame-content">
+                            <img src="./nSQL.jpeg" alt="img2">
+                        </div>
+                    </div>
+                    <div class="frame frame_3">
+                        <div class="frame-content">
+                            <img src="./re.jpeg" alt="img3">
+                        </div>
+                    </div>
+                    <div class="frame frame_4">
+                        <div class="frame-content">
+                            <img src="./uc.jpeg" alt="img4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="controls">
+            <label for="frame1"></label>
+            <label for="frame2"></label>
+            <label for="frame3"></label>
+            <label for="frame4"></label>
+        </div>
+        <div id="bullets">
+            <label for="frame1"></label>
+            <label for="frame2"></label>
+            <label for="frame3"></label>
+            <label for="frame4"></label>
+        </div>
+    </div>
+</section>
+
+<section id="resume" class="py-16 px-6 bg-gray-800">
+    <div class="max-w-2xl mx-auto">
         <h2 class="text-3xl font-bold mb-6">RESUME</h2>
         <div class="grid md:grid-cols-3 gap-6">
             <!-- Software Skills -->
@@ -64,6 +257,7 @@
                     <li>Teamwork</li>
                     <li>Organization</li>
                 </ul>
+            
             </div>
 
             <!-- Additional Skills -->
@@ -86,7 +280,5 @@
         </div>
     </div>
 </section>
-
-
 </body>
 </html>
